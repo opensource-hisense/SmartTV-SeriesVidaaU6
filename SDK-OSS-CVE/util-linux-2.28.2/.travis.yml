@@ -1,0 +1,57 @@
+language: c
+
+sudo: required
+dist: trusty
+
+git:
+  depth: 1500
+
+compiler:
+  - gcc
+  - clang
+
+env:
+  - MAKE_CHECK="nonroot"
+  - MAKE_CHECK="root"
+  - MAKE_CHECK="dist"
+
+matrix:
+  include:
+    - os: linux
+      dist: precise
+      compiler: gcc
+      env: PRECISE="yes" MAKE_CHECK="root"
+    - os: osx
+      osx_image: xcode7.3
+      compiler: clang
+      env: MAKE_CHECK="nonroot"
+
+branches:
+  only:
+    - master
+    - /^stable.*/
+    - /^travis.*/
+
+before_install:
+  # print some host info
+  - env | grep -v "encrypted" | LC_ALL=C sort
+  - $CC --version
+  - which $CC
+  # workaround clang not system wide, fail on sudo make install
+  - export CC=`which $CC`
+  # workaround travis-ci issue #5301
+  - unset PYTHON_CFLAGS
+
+install:
+  - source ./.travis-functions.sh
+  - travis_install_script
+
+before_script:
+  - travis_before_script
+
+script:
+  - travis_script
+
+after_script:
+  - travis_after_script
+
