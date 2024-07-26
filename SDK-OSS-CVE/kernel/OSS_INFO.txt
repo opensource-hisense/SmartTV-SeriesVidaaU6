@@ -1,0 +1,4 @@
+NAME=kernel
+VERSION=4.19
+URL=http://kernel.org
+LICENSE=GPLv2

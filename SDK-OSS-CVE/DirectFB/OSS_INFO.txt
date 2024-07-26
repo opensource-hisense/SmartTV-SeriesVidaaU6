@@ -1,0 +1,4 @@
+NAME=uDirectFB
+VERSION=1.5.3
+URL=http://www.directfb.org
+LICENSE=GPLv2

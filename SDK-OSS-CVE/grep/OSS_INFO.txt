@@ -1,0 +1,4 @@
+NAME=grep
+VERSION=2.5.1a
+URL=http://www.gnu.org/software/grep
+LICENSE=GPLv2
