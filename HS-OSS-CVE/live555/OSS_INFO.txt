@@ -1,0 +1,4 @@
+NAME=live555
+VERSION=2021.05.03
+URL=http://www.live555.com/liveMedia/public
+LICENSE=LGPL
